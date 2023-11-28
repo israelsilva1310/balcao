@@ -44,7 +44,7 @@
                         class="bi bi-question-circle-fill"></i> Esqueceu a senha?</a> |
                 <a href="/balcao/cadastro/curriculo" class="text-decoration-none text-dark"><i
                         class="bi bi-person-fill-add"></i> Novo cadastro</a>
-                <?= $this->Html->link("Add User", ['action' => 'add']) ?>
+                <?= $this->Html->link("Cadastrar", ['action' => 'cadpf']) ?>
             </div>
         </div>
     </div>

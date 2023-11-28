@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller\Admin;
-
-use App\Controller\AppController;
+namespace App\Controller;
 
 /**
  * Users Controller
@@ -28,27 +26,70 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
+    public function cadastrarpf()
+    {
+        $user = $this->Users->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+
+                $this->Flash->success(__('The user has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('Usuario não foi salvo.'));
+        }
+        $this->set(compact('user'));
+    }
+
     public function add()
     {
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
+
                 $this->Flash->success(__('The user has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            // var_dump($user);
-            pr($user->getErrors);
             $this->Flash->error(__('Usuario não foi salvo.'));
         }
         $roles = $this->Users->Roles->find('list', limit: 200)->all();
         $this->set(compact('user', 'roles'));
     }
 
-    public function cadastrar()
+    public function cadpf()
     {
+        $user = $this->Users->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
 
+                $this->Flash->warning(__('Candidato Registrado.'));
+                return $this->redirect(['action' => 'dados_pessoais']);
+            }
+            $this->Flash->error(__('Erro, Candidato não registrado.'));
+        }
+
+        $this->set(compact('user'));
+    }
+
+    public function cadpj()
+    {
+        $user = $this->Users->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+
+                $this->Flash->success(__('Candidato Registrado.'));
+
+                return $this->redirect(['action' => 'dados_pessoais']);
+            }
+            $this->Flash->error(__('Erro, Candidato não registrado.'));
+        }
+
+        $this->set(compact('user'));
     }
 
     public function edit($id = null)
@@ -80,13 +121,6 @@ class UsersController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function beforeFilter(\Cake\Event\EventInterface $event)
-    {
-        parent::beforeFilter($event);
-        // Configure the login action to not require authentication, preventing
-        // the infinite redirect loop issue
-        $this->Authentication->addUnauthenticatedActions(['login', 'cadastrar', 'index']);
-    }
 
     public function login()
     {
@@ -106,6 +140,7 @@ class UsersController extends AppController
         if ($this->request->is('post') && !$result->isValid()) {
             $this->Flash->error(__('O seu email ou senha estão errados!'));
         }
+        $this->viewBuilder()->setLayout('login');
     }
 
     public function logout()
@@ -116,5 +151,13 @@ class UsersController extends AppController
             $this->Authentication->logout();
             return $this->redirect(['controller' => 'Users', 'action' => 'login']);
         }
+    }
+
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        // Configure the login action to not require authentication, preventing
+        // the infinite redirect loop issue
+        $this->Authentication->addUnauthenticatedActions(['login', 'cadastrar', 'cadpj', 'cadpf', 'index']);
     }
 }

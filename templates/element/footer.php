@@ -8,7 +8,9 @@
 <div class="container py-3">
     <div class="row">
         <div class="col-6 col-md-3 pb-3 mx-auto">
-            <img src="/public/img/logo.png" class="img-fluid">
+            <?= $this->Html->image('Logo-PM-Inconfidentes-2021-2024.png', [
+                'class' => 'img-fluid'
+            ]) ?>
         </div>
         <div class="col-md-6">
             <address class="text-white text-md-start">
@@ -20,9 +22,9 @@
             </address>
         </div>
         <div class="col-md-3 align-self-center fs-3">
-            <a href="https://www.facebook.com/camaraof/" target="_blank" class="text-white"><i
+            <a href="https://www.facebook.com/prefeituramunicipalde.inconfidentes" target="_blank" class="text-white"><i
                     class="bi bi-facebook"></i></a>
-            <a href="https://www.youtube.com/channel/UCFIuGvginDRjFWhGBEJ0hEA" target="_blank" class="text-white"><i
+            <a href="https://www.youtube.com/@prefeituramunicipaldeincon4449" target="_blank" class="text-white"><i
                     class="bi bi-youtube"></i></a>
         </div>
     </div>

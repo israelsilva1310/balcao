@@ -34,18 +34,20 @@ return function (RouteBuilder $routes): void {
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/home.php)...
          */
-        $builder->connect('/', ['prefix' => 'Admin', 'controller' => 'Dashboard', 'action' => 'index']);
-        $builder->connect('/users', ['prefix' => 'Admin', 'controller' => 'Users', 'action' => 'index']);
-        $builder->connect('/login', ['prefix' => 'Admin', 'controller' => 'Users', 'action' => 'login']);
-        $builder->connect('/logout', ['prefix' => 'Admin', 'controller' => 'Users', 'action' => 'logout']);
-        $builder->connect('/cadastrar', ['prefix' => 'Admin', 'controller' => 'Users', 'action' => 'cadastrar']);
+        $builder->connect('/', ['controller' => 'Dashboard', 'action' => 'index']);
+        $builder->connect('/users', ['controller' => 'Users', 'action' => 'index']);
+        $builder->connect('/login', ['controller' => 'Users', 'action' => 'login']);
+        $builder->connect('/entrar', ['controller' => 'Users', 'action' => 'login']);
+        $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
+        $builder->connect('/cad_pessoa', ['controller' => 'Users', 'action' => 'cadpf']);
+        $builder->connect('/cad_empresa', ['controller' => 'Users', 'action' => 'cadpj']);
 
         $builder->connect('/pages/*', 'Pages::display');
         $builder->fallbacks();
     });
 
     $routes->prefix('admin', function (RouteBuilder $builder): void {
-        $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+        $builder->connect('/', ['controller' => 'Admin', 'action' => 'Dashboard']);
 
         $builder->connect('/pages/*', 'Pages::display');
 
@@ -64,40 +66,9 @@ return function (RouteBuilder $routes): void {
          */
         $builder->fallbacks();
     });
-    $routes->prefix('candidatos', function (RouteBuilder $builder): void {
-        $builder->connect('/', ['controller' => 'Curriculos', 'action' => 'index']);
+    $routes->prefix('empresas', function (RouteBuilder $builder): void {
+        $builder->connect('/', ['controller' => 'Empresas', 'action' => 'index']);
 
-        $builder->connect('/pages/*', 'Pages::display');
-
-        /*
-         * Connect catchall routes for all controllers.
-         *
-         * The `fallbacks` method is a shortcut for
-         *
-         * ```
-         * $builder->connect('/{controller}', ['action' => 'index']);
-         * $builder->connect('/{controller}/{action}/*', []);
-         * ```
-         *
-         * You can remove these routes once you've connected the
-         * routes you want in your application.
-         */
         $builder->fallbacks();
     });
-
-    /*
-     * If you need a different set of middleware or none at all,
-     * open new scope and define routes there.
-     *
-     * ```
-     * $routes->scope('/api', function (RouteBuilder $builder): void {
-     *     // No $builder->applyMiddleware() here.
-     *
-     *     // Parse specified extensions from URLs
-     *     // $builder->setExtensions(['json', 'xml']);
-     *
-     *     // Connect API actions here.
-     * });
-     * ```
-     */
 };

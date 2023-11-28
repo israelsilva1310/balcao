@@ -5,9 +5,8 @@
  *HomePage: https://israelcasilva.com.br
  **/
 
-namespace App\Controller\Admin;
+namespace App\Controller;
 
-use App\Controller\AppController;
 use Cake\ORM\TableRegistry;
 
 class DashboardController extends AppController

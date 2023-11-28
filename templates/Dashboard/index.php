@@ -5,7 +5,6 @@
  *HomePage: https://israelcasilva.com.br
  **/
 //pr($this);
-echo 'sessao aberta';
 ?>
 <div class="row">
     <div class="col-md-8">
@@ -35,10 +34,21 @@ echo 'sessao aberta';
             <div class="btn-group btn-group-lg mx-auto" role="group" aria-label="Large button group">
                 <a data-bs-toggle="modal" data-bs-target="#modalajuda" class="btn btn-outline-primary"><i
                         class="bi bi-patch-question"></i> Como Usar?</a>
-                <a href="/balcao/cadastro/curriculo" class="btn btn-outline-primary"><i
-                        class="bi bi-file-earmark-person"></i> Cadastrar Currículo</a>
-                <a href="/balcao/cadastro/empresa" class="btn btn-outline-primary"><i class="bi bi-buildings"></i>
-                    Cadastrar Empresa</a>
+
+                <?= $this->Html->link('<i class="bi bi-file-earmark-person"></i>Cadastrar Curriculo', [
+                    'controller' => 'Users',
+                    'action' => 'cadpf',
+                ], [
+                    'class' => 'btn btn-outline-primary',
+                    'escape' => false]) ?>
+
+                <?= $this->Html->link('<i class="bi bi-file-earmark-person"></i>Cadastrar Empresa', [
+                    'controller' => 'Users',
+                    'action' => 'cadpj',
+                ], [
+                    'class' => 'btn btn-outline-primary',
+                    'escape' => false]) ?>
+
                 <a href="/balcao/entrar" class="btn btn-outline-primary"><i class="bi bi-door-open"></i> Entrar no
                     Sistema</a>
             </div>
@@ -264,7 +274,7 @@ echo 'sessao aberta';
                 <ul class="pagination justify-content-center">
 
                     <li class="active page-item">
-                        <a class="page-link" href="https://camaraourofino.mg.gov.br/index.php/balcao?page=1">
+                        <a class="page-link" href="">
                             1 </a>
                     </li>
 
@@ -273,7 +283,6 @@ echo 'sessao aberta';
         </div>
 
     </div>
-</div>
 </div>
 
 <div class="modal fade" id="modalajuda" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -346,8 +355,4 @@ echo 'sessao aberta';
     </div>
 </div>
 
-
-<script>
-
-</script>
 

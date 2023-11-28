@@ -5,13 +5,20 @@
  *HomePage: https://israelcasilva.com.br
  **/
 ?>
+<?php
+/**
+ *Author: Israel C A Silva
+ *git: https://github.com/israelsilva1310
+ *HomePage: https://israelcasilva.com.br
+ **/
+?>
 <div>
-    <h4 class="display-6 titulo-sessao fw-bold">Cadastro</h4>
+    <h4 class="display-6 titulo-sessao fw-bold">Cadastro Empresa</h4>
 
     <p>Para iniciar o seu cadastro, por favor, preencha o formulário abaixo e clique em "Enviar". Em seguida, você
         receberá um email de confirmação no email fornecido.</p>
 
-    <form action="/cadastrar/pessoa" method="post">
+    <form action="./users/cadastrar/" method="post">
         <div class="mb-3">
             <label for="nome" class="form-label">Nome Completo</label>
             <input type="text" class="form-control" id="nome" name="nome" value="" required="">
@@ -44,3 +51,4 @@
     <div style="display:none"><label>Preencha este campo para continuar</label><input type="text" name="campo1"
                                                                                       value=""></div>
 </div>
+
