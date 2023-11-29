@@ -42,10 +42,9 @@
             'class' => 'form-control',
             'type' => 'password',
             'id' => 'senha',
-            'name' => 'senha',
+            'minlength' => 8,
             'label' => 'Senha',
             'placeholder' => 'Escolha uma senha segura',
-            'minlength' => 8,
             'required' => ''
         ]) ?>
         <div class="form-text">
@@ -58,12 +57,9 @@
         <input type="password" class="form-control" id="senha_c" name="senha_c" minlength="8" required="">
         <spam class="text-danger"></spam>
     </div>
-    <?= $this->Form->button(__('submit', [
-        'class' => 'btn btn-primary btn-busca mb-3',
-        'type' => 'submit',
-        'label' => 'Enviar',
-        'value' => 'Enviar'
-    ])) ?>
+    <?= $this->Form->submit(__('Cadastrar'), [
+        'class' => 'btn btn-primary btn-busca mb-3'
+    ]) ?>
 
 </div>
 

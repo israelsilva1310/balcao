@@ -36,6 +36,7 @@ return function (RouteBuilder $routes): void {
          */
         $builder->connect('/', ['controller' => 'Dashboard', 'action' => 'index']);
         $builder->connect('/users', ['controller' => 'Users', 'action' => 'index']);
+        $builder->connect('/users/esquecisenha', ['controller' => 'Users', 'action' => 'esquecisenha']);
         $builder->connect('/login', ['controller' => 'Users', 'action' => 'login']);
         $builder->connect('/entrar', ['controller' => 'Users', 'action' => 'login']);
         $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);

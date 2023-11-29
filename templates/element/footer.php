@@ -30,6 +30,6 @@
     </div>
 </div>
 <div>
-    Desenvolvido por: <a href="https://pontocomdesenvolvimento.net/" class="text-white text-decoration-none fw-bold"
-                         target="_blank">PontoCOM Desenvolvimento</a>
+    Desenvolvido por: <a href="https://tiosilvadesenvolvimento.com.br/" class="text-white text-decoration-none fw-bold"
+                         target="_blank">Tio Silva Desenvolvimento</a>
 </div>

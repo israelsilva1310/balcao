@@ -66,7 +66,7 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
 
-                $this->Flash->warning(__('Candidato Registrado.'));
+                $this->Flash->success(__('Candidato Registrado.'));
                 return $this->redirect(['action' => 'dados_pessoais']);
             }
             $this->Flash->error(__('Erro, Candidato não registrado.'));
@@ -82,7 +82,7 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
 
-                $this->Flash->success(__('Candidato Registrado.'));
+                $this->Flash->success(__('Candidato Registrado, agora faça login.'));
 
                 return $this->redirect(['action' => 'dados_pessoais']);
             }
@@ -153,11 +153,16 @@ class UsersController extends AppController
         }
     }
 
+    public function esquecisenha()
+    {
+        $this->viewBuilder()->setLayout('esquecisenha');
+    }
+
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);
         // Configure the login action to not require authentication, preventing
         // the infinite redirect loop issue
-        $this->Authentication->addUnauthenticatedActions(['login', 'cadastrar', 'cadpj', 'cadpf', 'index']);
+        $this->Authentication->addUnauthenticatedActions(['login', 'cadastrar', 'cadpj', 'cadpf', 'index', 'esquecisenha']);
     }
 }

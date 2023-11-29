@@ -50,7 +50,6 @@
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link('Sair', [
-                        'prefix' => 'Admin',
                         'controller' => 'Users',
                         'action' => 'logout'], [
                         'class' => 'nav-link px-md-3 py-md-4 text-light fw-bold titulo-menu text-uppercase'
